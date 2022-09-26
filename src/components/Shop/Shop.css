@@ -10,5 +10,7 @@
 }
 
 .cart-containar{
+    position: sticky;
+    top: 20px;
     background-color: rgba(255, 153, 0, 0.3);
 }
