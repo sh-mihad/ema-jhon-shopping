@@ -1,12 +1,14 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { addToDb, getStoredCart } from '../../utilities/fakedb';
 import Cart from '../cart/Cart';
 import Product from '../product/Product';
 
 import './Shop.css'
 
 const Shop = () => {
+   
     const [products, setProducts] =useState([]);
     const [cart ,setCart] = useState([])
     useEffect(()=>{
@@ -15,9 +17,23 @@ const Shop = () => {
         .then(data=>setProducts(data))
     },[])
 
+    useEffect(()=>{
+    
+     const getData =  getStoredCart()
+     for(const id in getData){
+      const addedProducts =products.find(product=>product.id === id)
+      if(addedProducts){
+        const quantity = getData[id];
+        console.log(quantity)
+        // console.log(addedProducts)
+      }
+    }
+    },[products])
+
     const addToCartHandler =(product)=>{
         const newCart = [...cart, product];
         setCart(newCart)
+        addToDb(product.id)
     }
     return (
         <div className="shope">

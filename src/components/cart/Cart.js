@@ -7,7 +7,7 @@ const Cart = ({cart}) => {
     let charge = 0;
 
     for(const x of cart){
-        console.log(x);
+        // console.log(x);
        sum = sum+x.price;
        charge = charge=x.shipping
     }
@@ -20,7 +20,7 @@ const Cart = ({cart}) => {
                <p>Total Price : ${sum}</p>
                <p>Total Shipping charge : ${charge}</p>
                <p>Tax: ${tax}</p>
-               <h4>Grand Total : ${grandTotal} </h4>
+               <h4>Grand Total : ${grandTotal.toFixed(2)} </h4>
         </div>
     );
 };
